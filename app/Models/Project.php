@@ -98,8 +98,10 @@ class Project extends BaseModel
 
     public function clientName(): ?string
     {
-        return $this->stakeholders
-            ->first(fn (ProjectCompany $stakeholder): bool => $stakeholder->role === ProjectStakeholderRole::Client)
+        $clients = $this->stakeholders
+            ->filter(fn (ProjectCompany $stakeholder): bool => $stakeholder->role === ProjectStakeholderRole::Client);
+
+        return ($clients->firstWhere('is_primary', true) ?? $clients->first())
             ?->company
             ?->legal_name;
     }
