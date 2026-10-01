@@ -9,7 +9,7 @@ Construction project management application built with **Laravel 13** and **Fila
 - Filament 5
 - Livewire
 - Tailwind CSS 4
-- Vite
+- Vite 8
 - SQLite for local development
 - MySQL / PostgreSQL compatible application conventions
 
@@ -45,7 +45,9 @@ http://localhost:8000/admin
 - Collapsible project-oriented navigation
 - Native Laravel roles and permissions
 - Global and project-scoped role separation
-- User teams, departments and designations
+- User teams, departments, designations and optional company association
+- Central company directory with multi-classification support
+- Company contacts, addresses and compliance documents
 - Login activity tracking
 - Shared status, priority, approval, document and project enums
 - Shared formatting and file-path conventions
@@ -54,7 +56,8 @@ Documentation:
 
 - [Development conventions](docs/development-conventions.md)
 - [Access control](docs/access-control.md)
+- [Company directory](docs/company-directory.md)
 
 ## Development roadmap
 
-The application is being delivered in implementation groups. Groups 1-2 establish the application foundation and access-control layer. Subsequent groups add companies, projects, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.
+The application is being delivered in implementation groups. Groups 1-3 establish the application foundation, access control and company directory. Subsequent groups add projects, project structures, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.

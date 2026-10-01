@@ -22,6 +22,7 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'department_id' => null,
             'designation_id' => null,
+            'company_id' => null,
             'status' => ActiveStatus::Active,
             'avatar_path' => null,
             'last_login_at' => null,

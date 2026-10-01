@@ -60,6 +60,11 @@ class UserResource extends Resource
                     ->options(ActiveStatus::options())
                     ->required()
                     ->default(ActiveStatus::Active->value),
+                Select::make('company_id')
+                    ->label('Company')
+                    ->relationship('company', 'legal_name')
+                    ->searchable()
+                    ->preload(),
                 Select::make('department_id')
                     ->label('Department')
                     ->relationship('department', 'name')
@@ -111,6 +116,10 @@ class UserResource extends Resource
                 TextColumn::make('email')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('company.legal_name')
+                    ->label('Company')
+                    ->sortable()
+                    ->toggleable(),
                 TextColumn::make('department.name')
                     ->label('Department')
                     ->sortable()
@@ -135,6 +144,8 @@ class UserResource extends Resource
             ->filters([
                 SelectFilter::make('status')
                     ->options(ActiveStatus::options()),
+                SelectFilter::make('company')
+                    ->relationship('company', 'legal_name'),
                 SelectFilter::make('department')
                     ->relationship('department', 'name'),
             ])

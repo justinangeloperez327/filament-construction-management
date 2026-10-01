@@ -25,6 +25,7 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'department_id',
         'designation_id',
+        'company_id',
         'status',
         'avatar_path',
         'last_login_at',
@@ -58,6 +59,11 @@ class User extends Authenticatable implements FilamentUser
     public function designation(): BelongsTo
     {
         return $this->belongsTo(Designation::class);
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 
     public function roles(): BelongsToMany
