@@ -9,6 +9,7 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\Width;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -28,9 +29,37 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName('Construction Management')
+            ->brandLogo(asset('images/brand-mark.svg'))
+            ->brandLogoHeight('2rem')
+            ->favicon(asset('favicon.svg'))
+            ->darkMode()
             ->colors([
                 'primary' => Color::Blue,
+                'gray' => Color::Slate,
+                'info' => Color::Sky,
+                'success' => Color::Emerald,
+                'warning' => Color::Amber,
+                'danger' => Color::Rose,
             ])
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->maxContentWidth(Width::Full)
+            ->sidebarCollapsibleOnDesktop()
+            ->navigationGroups([
+                'Projects',
+                'Project Controls',
+                'Documents',
+                'Engineering',
+                'QA/QC',
+                'HSE',
+                'Site Operations',
+                'Procurement',
+                'Commercial',
+                'Reports',
+                'Administration',
+            ])
+            ->spa(hasPrefetching: true)
+            ->unsavedChangesAlerts()
+            ->databaseNotifications()
             ->discoverResources(
                 in: app_path('Filament/Resources'),
                 for: 'App\\Filament\\Resources',
@@ -48,7 +77,6 @@ class AdminPanelProvider extends PanelProvider
             )
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -1,0 +1,12 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+.fi-main {
+    @apply pb-8;
+}
+
+.fi-section {
+    @apply shadow-sm;
+}

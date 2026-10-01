@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Validate Composer configuration
+        run: composer validate --strict --no-check-lock
+
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist
 
@@ -34,7 +37,9 @@ jobs:
           cp .env.example .env
           php artisan key:generate
           touch database/database.sqlite
-          php artisan migrate --force
+          php artisan migrate:fresh --force
+          php artisan config:cache
+          php artisan config:clear
 
       - name: Install frontend dependencies
         run: npm install

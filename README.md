@@ -11,6 +11,7 @@ Construction project management application built with **Laravel 13** and **Fila
 - Tailwind CSS 4
 - Vite
 - SQLite for local development
+- MySQL / PostgreSQL compatible application conventions
 
 ## Local setup
 
@@ -32,6 +33,19 @@ Open the Filament panel at:
 http://localhost:8000/admin
 ```
 
-## Initial scope
+## Application defaults
 
-The application foundation is intentionally small. Construction-management modules will be added incrementally on top of this baseline: projects, clients, contracts, teams, documents, RFIs, submittals, tasks, progress, procurement, cost control, and reporting.
+- Timezone: `Asia/Dubai`
+- Currency: `AED`
+- Private construction documents by default
+- Light and dark Filament themes
+- Database notifications
+- Collapsible project-oriented navigation
+- Shared status, priority, approval, document and project enums
+- Shared formatting and file-path conventions
+
+Development conventions are documented in [docs/development-conventions.md](docs/development-conventions.md).
+
+## Development roadmap
+
+The application is being delivered in implementation groups. Group 1 establishes the application foundation. Subsequent groups add users and permissions, companies, projects, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.
