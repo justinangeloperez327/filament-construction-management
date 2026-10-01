@@ -21,9 +21,11 @@ cp .env.example .env
 php artisan key:generate
 touch database/database.sqlite
 php artisan migrate
+php artisan db:seed
 npm install
 npm run build
 php artisan make:filament-user
+php artisan app:grant-system-admin user@example.com
 composer dev
 ```
 
@@ -41,11 +43,18 @@ http://localhost:8000/admin
 - Light and dark Filament themes
 - Database notifications
 - Collapsible project-oriented navigation
+- Native Laravel roles and permissions
+- Global and project-scoped role separation
+- User teams, departments and designations
+- Login activity tracking
 - Shared status, priority, approval, document and project enums
 - Shared formatting and file-path conventions
 
-Development conventions are documented in [docs/development-conventions.md](docs/development-conventions.md).
+Documentation:
+
+- [Development conventions](docs/development-conventions.md)
+- [Access control](docs/access-control.md)
 
 ## Development roadmap
 
-The application is being delivered in implementation groups. Group 1 establishes the application foundation. Subsequent groups add users and permissions, companies, projects, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.
+The application is being delivered in implementation groups. Groups 1-2 establish the application foundation and access-control layer. Subsequent groups add companies, projects, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.
