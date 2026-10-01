@@ -67,4 +67,9 @@ class Company extends BaseModel
     {
         return $this->hasMany(ProjectCompany::class);
     }
+
+    public function workPackages(): HasMany
+    {
+        return $this->hasMany(WorkPackage::class, 'contractor_company_id');
+    }
 }

@@ -46,6 +46,9 @@ http://localhost:8000/admin
 - Native Laravel roles and permissions
 - Global and project-scoped role separation
 - Project-level access isolation
+- Project hierarchy: areas, assets, levels and locations
+- Discipline and trade master data
+- Project work packages with contractor assignments
 - Central project records with team membership, stakeholders and project contacts
 - User teams, departments, designations and optional company association
 - Central company directory with multi-classification support
@@ -60,7 +63,8 @@ Documentation:
 - [Access control](docs/access-control.md)
 - [Company directory](docs/company-directory.md)
 - [Projects](docs/projects.md)
+- [Project structure](docs/project-structure.md)
 
 ## Development roadmap
 
-The application is being delivered in implementation groups. Groups 1-4 establish the application foundation, access control, company directory and core project workspace. Subsequent groups add project structure, contracts, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.
+The application is being delivered in implementation groups. Groups 1-5 establish the application foundation, access control, company directory, projects and project breakdown structure. Subsequent groups add contracts, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.

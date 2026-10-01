@@ -77,22 +77,39 @@ class AccessControlSeeder extends Seeder
                 ->pluck('id'),
         );
 
-        $projectView = Permission::query()->where('slug', 'projects.view')->value('id');
-        $projectUpdate = Permission::query()->where('slug', 'projects.update')->value('id');
+        $projectViewSlugs = [
+            'projects.view',
+            'project_structure.view',
+            'work_packages.view',
+        ];
+
+        $projectViewPermissionIds = Permission::query()
+            ->whereIn('slug', $projectViewSlugs)
+            ->pluck('id');
 
         Role::query()
             ->where('scope', RoleScope::Project->value)
-            ->each(function (Role $role) use ($projectView): void {
-                if ($projectView) {
-                    $role->permissions()->syncWithoutDetaching([$projectView]);
-                }
+            ->each(function (Role $role) use ($projectViewPermissionIds): void {
+                $role->permissions()->syncWithoutDetaching($projectViewPermissionIds);
             });
 
-        $projectManager = Role::query()->where('slug', 'project-manager')->firstOrFail();
+        $managerPermissionIds = Permission::query()
+            ->whereIn('slug', [
+                'projects.update',
+                'project_structure.create',
+                'project_structure.update',
+                'project_structure.delete',
+                'work_packages.create',
+                'work_packages.update',
+                'work_packages.delete',
+            ])
+            ->pluck('id');
 
-        if ($projectUpdate) {
-            $projectManager->permissions()->syncWithoutDetaching([$projectUpdate]);
-        }
+        Role::query()
+            ->whereIn('slug', ['project-manager', 'construction-manager'])
+            ->each(function (Role $role) use ($managerPermissionIds): void {
+                $role->permissions()->syncWithoutDetaching($managerPermissionIds);
+            });
     }
 
     private function seedOrganizationStructure(): void

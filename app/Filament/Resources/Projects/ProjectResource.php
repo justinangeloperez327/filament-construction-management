@@ -7,9 +7,14 @@ use App\Filament\Resources\Projects\Pages\CreateProject;
 use App\Filament\Resources\Projects\Pages\EditProject;
 use App\Filament\Resources\Projects\Pages\ListProjects;
 use App\Filament\Resources\Projects\Pages\ViewProject;
+use App\Filament\Resources\Projects\RelationManagers\AreasRelationManager;
+use App\Filament\Resources\Projects\RelationManagers\AssetsRelationManager;
 use App\Filament\Resources\Projects\RelationManagers\ContactsRelationManager;
+use App\Filament\Resources\Projects\RelationManagers\LevelsRelationManager;
+use App\Filament\Resources\Projects\RelationManagers\LocationsRelationManager;
 use App\Filament\Resources\Projects\RelationManagers\MembersRelationManager;
 use App\Filament\Resources\Projects\RelationManagers\StakeholdersRelationManager;
+use App\Filament\Resources\Projects\RelationManagers\WorkPackagesRelationManager;
 use App\Models\Project;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -183,6 +188,11 @@ class ProjectResource extends Resource
             MembersRelationManager::class,
             StakeholdersRelationManager::class,
             ContactsRelationManager::class,
+            AreasRelationManager::class,
+            AssetsRelationManager::class,
+            LevelsRelationManager::class,
+            LocationsRelationManager::class,
+            WorkPackagesRelationManager::class,
         ];
     }
 

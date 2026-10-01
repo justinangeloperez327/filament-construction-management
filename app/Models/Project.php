@@ -61,6 +61,31 @@ class Project extends BaseModel
         return $this->hasMany(ProjectContact::class);
     }
 
+    public function areas(): HasMany
+    {
+        return $this->hasMany(ProjectArea::class);
+    }
+
+    public function assets(): HasMany
+    {
+        return $this->hasMany(ProjectAsset::class);
+    }
+
+    public function levels(): HasMany
+    {
+        return $this->hasMany(ProjectLevel::class);
+    }
+
+    public function locations(): HasMany
+    {
+        return $this->hasMany(ProjectLocation::class);
+    }
+
+    public function workPackages(): HasMany
+    {
+        return $this->hasMany(WorkPackage::class);
+    }
+
     public function activeMemberships(): HasMany
     {
         return $this->memberships()->active();
