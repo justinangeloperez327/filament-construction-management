@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class RecordSuccessfulLogin
 {
-    public function __construct(private readonly Request $request)
-    {
-    }
+    public function __construct(private readonly Request $request) {}
 
     public function handle(Login $event): void
     {
