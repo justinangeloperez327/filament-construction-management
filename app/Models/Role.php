@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\RoleScope;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Role extends BaseModel
 {
@@ -31,5 +32,10 @@ class Role extends BaseModel
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    public function projectMemberships(): HasMany
+    {
+        return $this->hasMany(ProjectMember::class);
     }
 }

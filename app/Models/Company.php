@@ -62,4 +62,9 @@ class Company extends BaseModel
     {
         return $this->hasMany(CompanyContact::class)->where('is_primary', true);
     }
+
+    public function projectAssignments(): HasMany
+    {
+        return $this->hasMany(ProjectCompany::class);
+    }
 }

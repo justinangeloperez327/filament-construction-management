@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ActiveStatus;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CompanyContact extends BaseModel
 {
@@ -46,5 +47,10 @@ class CompanyContact extends BaseModel
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function projectAssignments(): HasMany
+    {
+        return $this->hasMany(ProjectContact::class);
     }
 }

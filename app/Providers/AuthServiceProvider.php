@@ -10,6 +10,7 @@ use App\Models\CompanyDocument;
 use App\Models\Department;
 use App\Models\Designation;
 use App\Models\Permission;
+use App\Models\Project;
 use App\Models\Role;
 use App\Models\Team;
 use App\Models\User;
@@ -20,6 +21,7 @@ use App\Policies\CompanyPolicy;
 use App\Policies\DepartmentPolicy;
 use App\Policies\DesignationPolicy;
 use App\Policies\PermissionPolicy;
+use App\Policies\ProjectPolicy;
 use App\Policies\RolePolicy;
 use App\Policies\TeamPolicy;
 use App\Policies\UserPolicy;
@@ -42,6 +44,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::policy(CompanyContact::class, CompanyContactPolicy::class);
         Gate::policy(CompanyAddress::class, CompanyAddressPolicy::class);
         Gate::policy(CompanyDocument::class, CompanyDocumentPolicy::class);
+        Gate::policy(Project::class, ProjectPolicy::class);
 
         Gate::before(
             fn (User $user): ?bool => $user->isSystemAdministrator() ? true : null,

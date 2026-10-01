@@ -76,6 +76,23 @@ class AccessControlSeeder extends Seeder
                 })
                 ->pluck('id'),
         );
+
+        $projectView = Permission::query()->where('slug', 'projects.view')->value('id');
+        $projectUpdate = Permission::query()->where('slug', 'projects.update')->value('id');
+
+        Role::query()
+            ->where('scope', RoleScope::Project->value)
+            ->each(function (Role $role) use ($projectView): void {
+                if ($projectView) {
+                    $role->permissions()->syncWithoutDetaching([$projectView]);
+                }
+            });
+
+        $projectManager = Role::query()->where('slug', 'project-manager')->firstOrFail();
+
+        if ($projectUpdate) {
+            $projectManager->permissions()->syncWithoutDetaching([$projectUpdate]);
+        }
     }
 
     private function seedOrganizationStructure(): void

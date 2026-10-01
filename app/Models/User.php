@@ -83,6 +83,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(LoginActivity::class);
     }
 
+    public function projectMemberships(): HasMany
+    {
+        return $this->hasMany(ProjectMember::class);
+    }
+
     public function hasRole(string $role): bool
     {
         return $this->roles()->where('slug', $role)->exists();

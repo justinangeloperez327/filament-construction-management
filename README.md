@@ -45,6 +45,8 @@ http://localhost:8000/admin
 - Collapsible project-oriented navigation
 - Native Laravel roles and permissions
 - Global and project-scoped role separation
+- Project-level access isolation
+- Central project records with team membership, stakeholders and project contacts
 - User teams, departments, designations and optional company association
 - Central company directory with multi-classification support
 - Company contacts, addresses and compliance documents
@@ -57,7 +59,8 @@ Documentation:
 - [Development conventions](docs/development-conventions.md)
 - [Access control](docs/access-control.md)
 - [Company directory](docs/company-directory.md)
+- [Projects](docs/projects.md)
 
 ## Development roadmap
 
-The application is being delivered in implementation groups. Groups 1-3 establish the application foundation, access control and company directory. Subsequent groups add projects, project structures, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.
+The application is being delivered in implementation groups. Groups 1-4 establish the application foundation, access control, company directory and core project workspace. Subsequent groups add project structure, contracts, documents, engineering workflows, QA/QC, HSE, procurement, commercial controls, dashboards and reporting.
